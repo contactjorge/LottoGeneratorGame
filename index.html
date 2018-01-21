@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lotto and Lucky Day Lotto</title>
+	<link rel="stylesheet" target="styles.css">
+	<script type="text/javascript" src="lottoGame.js"></script>
+	<script>
+		let luckyDayLotto1 = new LottoDraw(45, 5, "lucky");
+		let illinoisLotto = new LottoDraw(52, 6, "illinois");
+	</script>
+</head>
+<body>
+<header></header>
+<main>
+	<div id="luckyDay">
+		<h1>Here are your winning Lucky Day Lotto Numbers:</h1>
+		<p></p>
+		<footer></footer>
+	</div>
+	<div id="lotto">
+		<h1>Here are your winning Lotto Numbers:</h1>
+		<p></p>
+		<footer></footer>
+	</div>
+	<script>
+		document.querySelector("#luckyDay p").innerHTML = luckyDayLotto1.num0 + ", " + luckyDayLotto1.num1 +
+			", " + luckyDayLotto1.num2 + ", " + luckyDayLotto1.num3 + ", " + luckyDayLotto1.num4;
+		document.querySelector("#luckyDay footer").innerHTML = "Ticket size: " + luckyDayLotto1.ticketSize + "| Number Max: " + luckyDayLotto1.lottoCeiling;
+		
+		document.querySelector("#lotto p").innerHTML = illinoisLotto.num0 + ", " + illinoisLotto.num1 +
+			", " + illinoisLotto.num2 + ", " + illinoisLotto.num3 + ", " + illinoisLotto.num4 +
+			", " + illinoisLotto.num5 + "\n" + "\nExtra Shot: " + illinoisLotto.extraShot;
+		document.querySelector("#lotto footer").innerHTML = "Ticket size: " + illinoisLotto.ticketSize + " | Number Max: " + illinoisLotto.lottoCeiling;
+	</script>
+</main>
+<footer></footer>
+
+
+</body>
+</html>
