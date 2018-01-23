@@ -39,7 +39,7 @@ function getLottoNumbers (lottoCeiling, ticketSize, lottoGame) {
 	let numStart = 0;
 	let numEnd = 0;
 	for (let a = 0; a < ticketSize; a++) {
-		if (a < 1) {
+		if (a < 2) {
 			numArray[a] = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, false);
 		} else if (a < 5) {
 			let numStart = 7;
@@ -63,7 +63,7 @@ function getExtraShot (lottoCeiling, ticketSize, lottoGame) {
 	//Get an array of lottery Numbers
 	let num = 0;
 	let numStart = 0;
-	let numEnd = 5;
+	let numEnd = 6;
 	for (let b = 0; b < numEnd; b++) {
 		num = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, true);
 	}
