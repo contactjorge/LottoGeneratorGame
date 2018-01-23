@@ -27,3 +27,8 @@ p {
 	color: white;
 	text-align: center;
 }
+.btn-play:hover {
+	background: white;
+	color: steelblue;
+	text-align: center;
+}
