@@ -28,7 +28,7 @@ p {
 	text-align: center;
 }
 
-.btn-play:hover {
+.btn-play:active {
 	background: lightgray;
 	color: steelblue;
 }
