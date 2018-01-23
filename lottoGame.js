@@ -5,10 +5,10 @@
  * Updated: 01/20/2018
  * Version: 1.0
  */
-const topLottoNumbers = [27, 7, 21, 11, 8, 16, 15, 6, 10, 2, 42, 20, 26, 33, 37, 34, 19,
+const C_topLottoNumbers = [27, 7, 21, 11, 8, 16, 15, 6, 10, 2, 42, 20, 26, 33, 37, 34, 19,
 	9, 28, 13, 4, 44, 24, 38, 43, 47, 30, 31, 5, 36]; //top 30 numbers
-const extraShot = [3, 23, 10, 25, 15, 2, 20, 24, 4, 19, 13]; //Picked 7 times of more.
-const topLuckyDayNumbers = [24, 2, 27, 22, 14, 45, 9, 40, 33, 1, 18, 30, 13, 7, 20, 23,
+const C_extraShot = [3, 23, 10, 25, 15, 2, 20, 24, 4, 19, 13]; //Picked 7 times of more.
+const C_topLuckyDayNumbers = [24, 2, 27, 22, 14, 45, 9, 40, 33, 1, 18, 30, 13, 7, 20, 23,
 	36, 28, 41, 10, 32, 3, 35, 37, 12, 8, 26]; //top 27
 
 function getLuckyLottoNumbers (lottoCeiling, ticketSize, lottoGame) {
@@ -127,23 +127,18 @@ function findDuplicateNumber(numArray, lottoCeiling, lottoGameNumSet, ticketSize
 	return newNumArr;
 }
 
+
 function LottoDraw(lottoCeiling, ticketSize, lottoGame) {
 	//Main function for the LottoNumberGenerator Draw object
 	this.lottoCeiling = lottoCeiling;
 	this.ticketSize = ticketSize;
-	if (lottoGame === "lucky") {
-		let numberArray = getLuckyLottoNumbers(lottoCeiling, ticketSize, topLuckyDayNumbers);
-		/*
-		for (let i = 0; i < 2; i++){
-			numberArray = getLuckyLottoNumbers(lottoCeiling, ticketSize, topLuckyDayNumbers);
-		}//End random number generator at the Array level. (Can't be too picky)
-		*/
-
+	this.lottoGame = lottoGame;
+	this.setLucky = function setLucky () {
+		let numberArray = getLuckyLottoNumbers(lottoCeiling, ticketSize, C_topLuckyDayNumbers);
 		numberArray.sort(function(a, b){return a + b}); //sort in reverse order
-		numberArray = findDuplicateNumber(numberArray, lottoCeiling, topLuckyDayNumbers, ticketSize, "lucky");
-		//find Duplicate loop. (Can't be too careful)
+		numberArray = findDuplicateNumber(numberArray, lottoCeiling, C_topLuckyDayNumbers, ticketSize, "lucky");
 		
-		//numberArray = findDuplicateNumber(numberArray, lottoCeiling, topLuckyDayNumbers, ticketSize); //check for duplicate one more time
+		//find Duplicate loop. (Can't be too careful)
 		numberArray.sort(function(a, b){return a - b}); //sort in order
 		
 		//assign values manually. For now...
@@ -152,20 +147,19 @@ function LottoDraw(lottoCeiling, ticketSize, lottoGame) {
 		this.num2 = numberArray[2];
 		this.num3 = numberArray[3];
 		this.num4 = numberArray[4];
-	} else if (lottoGame === "illinois") {
-		let numberArray = getLottoNumbers(lottoCeiling, ticketSize, topLottoNumbers);
-		/*
-		for (let i = 0; i < 2; i++){
-			numberArray = getLottoNumbers(lottoCeiling, ticketSize, topLottoNumbers);
-		}//End random number generator at the Array level. (Can't be too picky)
-		*/
-		numberArray.sort(function(a, b){return a + b});
+	};
+	
+	this.setLotto = function setLotto () {
+		let numberArray = getLottoNumbers(lottoCeiling, ticketSize, C_topLottoNumbers);
+		numberArray.sort(function (a, b) {
+			return a + b
+		});
+		numberArray = findDuplicateNumber(numberArray, lottoCeiling, C_topLottoNumbers, ticketSize);
 		
-		numberArray = findDuplicateNumber(numberArray, lottoCeiling, topLottoNumbers, ticketSize);
 		//find Duplicate loop. (Can't be too careful)
-		
-		//numberArray = findDuplicateNumber(numberArray, lottoCeiling, topLottoNumbers, ticketSize);
-		numberArray.sort(function(a, b){return a - b});
+		numberArray.sort(function (a, b) {
+			return a - b
+		});
 		
 		//assign values manually. For now...
 		this.num0 = numberArray[0];
@@ -174,6 +168,9 @@ function LottoDraw(lottoCeiling, ticketSize, lottoGame) {
 		this.num3 = numberArray[3];
 		this.num4 = numberArray[4];
 		this.num5 = numberArray[5];
-		this.extraShot = getExtraShot(25, 1, extraShot);
+		this.extraShot = getExtraShot(25, 1, C_extraShot);
+		this.displayLotto = function displayLotto() {
+		};
+		
 	}
 }

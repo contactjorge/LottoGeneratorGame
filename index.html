@@ -3,7 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lotto and Lucky Day Lotto</title>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="styles.css">
 
@@ -12,48 +22,59 @@
 	<script>
 		let luckyDayLotto1 = new LottoDraw(45, 5, "lucky");
 		let illinoisLotto = new LottoDraw(52, 6, "illinois");
+		luckyDayLotto1.playLucky = function playLucky () {
+			this.setLucky();
+			this.displayNumbers = document.querySelector('#luckyDay p').innerHTML = luckyDayLotto1.num0 + ", " + luckyDayLotto1.num1 +
+				", " + luckyDayLotto1.num2 + ", " + luckyDayLotto1.num3 + ", " + luckyDayLotto1.num4;
+			
+			this.displayFooter = document.querySelector("#luckySize").innerHTML = "Ticket size: " + luckyDayLotto1.ticketSize +
+				"| Number Max: " + luckyDayLotto1.lottoCeiling; //new method using object prototype
+		};
 		
-		function displayLucky () {
-			return document.querySelector("#luckyDay p").innerHTML = luckyDayLotto1.num0 + ", " + luckyDayLotto1.num1 +
-				", " + luckyDayLotto1.num2 + ", " + luckyDayLotto1.num3 + ", " + luckyDayLotto1.num4
-		}
-		function displayLotto() {
-			return document.querySelector("#lotto p").innerHTML = illinoisLotto.num0 + ", " + illinoisLotto.num1 +
-				", " + illinoisLotto.num2 + ", " + illinoisLotto.num3 + ", " + illinoisLotto.num4 +
-				", " + illinoisLotto.num5 + "\n" + "\nExtra Shot: " + illinoisLotto.extraShot;
-		}
+		//illinoisLotto.displayFooter = document.querySelector("#lottoSize").innerHTML = "Ticket size: " + illinoisLotto.ticketSize +
+		//	" | Number Max: " + illinoisLotto.lottoCeiling; //new method using object prototype
+		
+		illinoisLotto.playLotto = function playLotto () {
+			this.setLotto();
+			this.displayNumbers = document.querySelector('#lotto p').innerHTML = illinoisLotto.num0 + ', ' + illinoisLotto.num1 +
+				', ' + illinoisLotto.num2 + ', ' + illinoisLotto.num3 + ', ' + illinoisLotto.num4 + ', ' +
+				illinoisLotto.num5 + ' \nExtra Shot: ' + illinoisLotto.extraShot;
+			
+			this.displayFooter = document.querySelector('#lottoSize').innerHTML = "Ticket size: " + illinoisLotto.ticketSize +
+				" | Number Max: " + illinoisLotto.lottoCeiling; //new method using object prototype
+		};
+
 	</script>
 </head>
-<body class="w3-container">
-<header class="w3-row"></header>
-<main class="w3-row">
-	<div class="w3-card-2" id="luckyDay">
-		<header><h1>Here are your winning Lucky Day Lotto Numbers:</h1></header>
-		<p></p>
-		<footer></footer>
-	</div>
-	<button class="w3-button" type="submit" onclick="displayLucky(luckyDayLotto1)">Retry</button>
-	<div class="w3-card-2" id="lotto">
-		<header><h1>Here are your winning Lotto Numbers:</h1></header>
-		<p></p>
-		<footer></footer>
-	</div>
-	<button class="w3-button" type="submit" onclick="displayLotto(illinoisLotto)">Retry</button>
-	<script>
-		displayLucky(luckyDayLotto1);
-		displayLotto(illinoisLotto);
+<body>
+<header class="container"></header>
+<main class="container">
+	<section class="row">
+		<div class="col-md-6 card card-decor">
+			<h2 class="card-title">Here are your Lucky Day Lotto Numbers:</h2>
+			<div class="card-body" id="luckyDay">
+				<p></p>
+				<p id="luckySize"></p>
+			</div>
+			<footer class="btn btn-play" type="button" onclick="luckyDayLotto1.playLucky();">Retry</footer>
+		</div>
 		
-		luckyDayLotto1.displayFooter = document.querySelector("#luckyDay footer").innerHTML = "Ticket size: " + luckyDayLotto1.ticketSize +
-			"| Number Max: " + luckyDayLotto1.lottoCeiling; //new method using object prototype
-		illinoisLotto.displayFooter = document.querySelector("#lotto footer").innerHTML = "Ticket size: " + illinoisLotto.ticketSize +
-			" | Number Max: " + illinoisLotto.lottoCeiling; //new method using object prototype
-		luckyDayLotto1.displayFooter();
-		illinoisLotto.displayFooter();
-
-	</script>
+		<div class="col-md-6 card card-decor">
+			<h2 class="card-title">Here are your Lotto Numbers:</h2>
+			<div class="card-body" id="lotto">
+				<p class="card-text" ></p>
+				<p class="card-text" id="lottoSize"></p>
+			</div>
+			<footer class="btn btn-play" type="button" onclick="illinoisLotto.playLotto();">Retry</footer>
+		</div>
+	</section>
 </main>
-<footer class="w3-row"></footer>
-
+<footer class="w3-container"></footer>
+<script>
+	
+	luckyDayLotto1.playLucky();
+	illinoisLotto.playLotto();
+</script>
 
 </body>
 </html>

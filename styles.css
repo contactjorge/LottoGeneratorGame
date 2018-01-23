@@ -1,18 +1,37 @@
-div {
-	background: steelblue;
-	color: white;
-	border: black 1px;
-	height: 10rem;
-	width: 30rem;
-}
+
 body {
 	background: #EAEAEA;
 	font-family: 'Lucida Grande', 'Helvetica', 'Arial', SansSerif;
 }
 h1 {
+	font-size: 22px;
+}
+h2 {
 	font-size: 20px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 16px;
+}
+h5 {
+	font-size: 15px;
 }
 p {
 	font-size: 14px;
 	font-weight: bold;
+}
+.btn-play, .card-decor {
+	background: steelblue;
+	color: white;
+	text-align: center;
+}
+.btn-play:active{
+	background: white;
+	color: steelblue;
+}
+.btn-play:hover {
+	background: lightgray;
+	color: steelblue;
 }
