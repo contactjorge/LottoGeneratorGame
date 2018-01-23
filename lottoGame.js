@@ -42,7 +42,7 @@ function getLottoNumbers (lottoCeiling, ticketSize, lottoGame) {
 		if (a < 2) {
 			numArray[a] = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, false);
 		} else if (a < 5) {
-			let numStart = 7;
+			let numStart = 15;
 			let numEnd = 29; //19 was better
 			for (let b = 0; b < 2; b++){
 				numArray[a] = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, true);
@@ -116,7 +116,7 @@ function findDuplicateNumber(numArray, lottoCeiling, lottoGameNumSet, ticketSize
 			for (let b = a + 1; b <= (ticketSize - 1); b++) {
 				if (numArray[a] === numArray[b]) {
 					console.log('Lotto duplicate found');
-					newNumArr[b] = getLottoNumber(lottoCeiling, 0, 29, lottoGameNumSet, true);
+					newNumArr[b] = getLottoNumber(lottoCeiling, 0, 29, lottoGameNumSet, false);
 				} else {
 					console.log('Lotto duplicate not found')
 				}
