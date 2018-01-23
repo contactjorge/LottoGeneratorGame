@@ -46,11 +46,13 @@
 
 	</script>
 </head>
-<body>
-<header class="container"></header>
-<main class="container">
+<body class="container">
+<header class="container">
+	<nav class="row"></nav>
+</header>
+<main class="container-fluid">
 	<section class="row">
-		<div class="col-md-6 card card-decor">
+		<div class="col-md-5 card card-decor">
 			<h2 class="card-title">Here are your Lucky Day Lotto Numbers:</h2>
 			<div class="card-body" id="luckyDay">
 				<p></p>
@@ -58,8 +60,8 @@
 			</div>
 			<footer class="btn btn-play" type="button" onclick="luckyDayLotto1.playLucky();">Retry</footer>
 		</div>
-		
-		<div class="col-md-6 card card-decor">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 card card-decor">
 			<h2 class="card-title">Here are your Lotto Numbers:</h2>
 			<div class="card-body" id="lotto">
 				<p class="card-text" ></p>
@@ -69,7 +71,7 @@
 		</div>
 	</section>
 </main>
-<footer class="w3-container"></footer>
+<footer class="container"></footer>
 <script>
 	
 	luckyDayLotto1.playLucky();
