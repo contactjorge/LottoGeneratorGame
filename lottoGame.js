@@ -42,7 +42,7 @@ function getLottoNumbers (lottoCeiling, ticketSize, lottoGame) {
 		if (a < 1) {
 			numArray[a] = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, false);
 		} else if (a < 5) {
-			let numStart = 4;
+			let numStart = 7;
 			let numEnd = 29; //19 was better
 			for (let b = 0; b < 2; b++){
 				numArray[a] = getLottoNumber(lottoCeiling, numStart, numEnd, lottoGame, true);
