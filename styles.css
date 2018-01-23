@@ -27,8 +27,3 @@ p {
 	color: white;
 	text-align: center;
 }
-
-.btn-play:active {
-	background: lightgray;
-	color: steelblue;
-}
