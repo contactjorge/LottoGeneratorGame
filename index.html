@@ -3,40 +3,56 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lotto and Lucky Day Lotto</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<link rel="stylesheet" href="styles.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
 	<script type="text/javascript" src="lottoGame.js"></script>
 	<script>
 		let luckyDayLotto1 = new LottoDraw(45, 5, "lucky");
 		let illinoisLotto = new LottoDraw(52, 6, "illinois");
+		
+		function displayLucky () {
+			return document.querySelector("#luckyDay p").innerHTML = luckyDayLotto1.num0 + ", " + luckyDayLotto1.num1 +
+				", " + luckyDayLotto1.num2 + ", " + luckyDayLotto1.num3 + ", " + luckyDayLotto1.num4
+		}
+		function displayLotto() {
+			return document.querySelector("#lotto p").innerHTML = illinoisLotto.num0 + ", " + illinoisLotto.num1 +
+				", " + illinoisLotto.num2 + ", " + illinoisLotto.num3 + ", " + illinoisLotto.num4 +
+				", " + illinoisLotto.num5 + "\n" + "\nExtra Shot: " + illinoisLotto.extraShot;
+		}
 	</script>
 </head>
-<body>
-<header></header>
-<main>
-	<div id="luckyDay">
-		<h1>Here are your winning Lucky Day Lotto Numbers:</h1>
+<body class="w3-container">
+<header class="w3-row"></header>
+<main class="w3-row">
+	<div class="w3-card-2" id="luckyDay">
+		<header><h1>Here are your winning Lucky Day Lotto Numbers:</h1></header>
 		<p></p>
-		<footer><button>Retry</button></footer>
+		<footer></footer>
 	</div>
-	<div id="lotto">
-		<h1>Here are your winning Lotto Numbers:</h1>
+	<button class="w3-button" type="submit" onclick="displayLucky(luckyDayLotto1)">Retry</button>
+	<div class="w3-card-2" id="lotto">
+		<header><h1>Here are your winning Lotto Numbers:</h1></header>
 		<p></p>
-		<footer><button>Retry</button></footer>
+		<footer></footer>
 	</div>
+	<button class="w3-button" type="submit" onclick="displayLotto(illinoisLotto)">Retry</button>
 	<script>
-		document.querySelector("#luckyDay p").innerHTML = luckyDayLotto1.num0 + ", " + luckyDayLotto1.num1 +
-			", " + luckyDayLotto1.num2 + ", " + luckyDayLotto1.num3 + ", " + luckyDayLotto1.num4;
-		document.querySelector("#luckyDay footer").innerHTML = "Ticket size: " + luckyDayLotto1.ticketSize +
-			"| Number Max: " + luckyDayLotto1.lottoCeiling;
+		displayLucky(luckyDayLotto1);
+		displayLotto(illinoisLotto);
 		
-		document.querySelector("#lotto p").innerHTML = illinoisLotto.num0 + ", " + illinoisLotto.num1 +
-			", " + illinoisLotto.num2 + ", " + illinoisLotto.num3 + ", " + illinoisLotto.num4 +
-			", " + illinoisLotto.num5 + "\n" + "\nExtra Shot: " + illinoisLotto.extraShot;
-		document.querySelector("#lotto footer").innerHTML = "Ticket size: " + illinoisLotto.ticketSize +
-			" | Number Max: " + illinoisLotto.lottoCeiling;
+		luckyDayLotto1.displayFooter = document.querySelector("#luckyDay footer").innerHTML = "Ticket size: " + luckyDayLotto1.ticketSize +
+			"| Number Max: " + luckyDayLotto1.lottoCeiling; //new method using object prototype
+		illinoisLotto.displayFooter = document.querySelector("#lotto footer").innerHTML = "Ticket size: " + illinoisLotto.ticketSize +
+			" | Number Max: " + illinoisLotto.lottoCeiling; //new method using object prototype
+		luckyDayLotto1.displayFooter();
+		illinoisLotto.displayFooter();
+
 	</script>
 </main>
-<footer></footer>
+<footer class="w3-row"></footer>
 
 
 </body>
